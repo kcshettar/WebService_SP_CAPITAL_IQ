@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MacquarieDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="WebService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Asset" Type="nchar" MaxLength="50" />
+          <Property Name="Business Description" Type="nchar" MaxLength="2000" />
+          <Property Name="Website" Type="nvarchar" MaxLength="250" />
+          <Property Name="Company Type" Type="nvarchar" MaxLength="250" />
+          <Property Name="Stock Symbol" Type="char" MaxLength="50" />
+          <Property Name="Market Cap" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="DUNS Number" Type="varchar" MaxLength="20" />
+          <Property Name="NAICS Code &amp; Description" Type="varchar" MaxLength="50" />
+          <Property Name="SIC Code &amp; Description" Type="varchar" MaxLength="50" />
+          <Property Name="Total Revenue" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="Year Found" Type="date" />
+          <Property Name="Total Employees" Type="int" />
+          <Property Name="HeadQuarters Address" Type="nchar" MaxLength="150" />
+          <Property Name="Telephone Number" Type="varchar" MaxLength="15" />
+          <Property Name="Key Personnel" Type="nchar" MaxLength="1000" />
+          <Property Name="Parent Company" Type="nchar" MaxLength="50" />
+          <Property Name="Subsidaries" Type="nchar" MaxLength="500" />
+          <Property Name="Past or Present Insured" Type="char" MaxLength="10" />
+          <Property Name="Submission Activity" Type="varchar" MaxLength="30" />
+          <Property Name="GURU" Type="nvarchar" MaxLength="250" />
+          <Property Name="FEIN Number" Type="varchar" MaxLength="20" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MacquarieDataModelStoreContainer">
+          <EntitySet Name="WebService" EntityType="Self.WebService" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MacquarieDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="WebService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Asset" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Business_Description" Type="String" MaxLength="2000" FixedLength="true" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Company_Type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Stock_Symbol" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Market_Cap" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DUNS_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NAICS_Code___Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIC_Code___Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Revenue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Year_Found" Type="DateTime" Precision="0" />
+          <Property Name="Total_Employees" Type="Int32" />
+          <Property Name="HeadQuarters_Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="Telephone_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Key_Personnel" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="Parent_Company" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Subsidaries" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="Past_or_Present_Insured" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Submission_Activity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="GURU" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FEIN_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MacquarieDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WebServices" EntityType="Self.WebService" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MacquarieDataModelStoreContainer" CdmEntityContainer="MacquarieDataEntities">
+          <EntitySetMapping Name="WebServices">
+            <EntityTypeMapping TypeName="MacquarieDataModel.WebService">
+              <MappingFragment StoreEntitySet="WebService">
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
+                <ScalarProperty Name="Business_Description" ColumnName="Business Description" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Company_Type" ColumnName="Company Type" />
+                <ScalarProperty Name="Stock_Symbol" ColumnName="Stock Symbol" />
+                <ScalarProperty Name="Market_Cap" ColumnName="Market Cap" />
+                <ScalarProperty Name="DUNS_Number" ColumnName="DUNS Number" />
+                <ScalarProperty Name="NAICS_Code___Description" ColumnName="NAICS Code &amp; Description" />
+                <ScalarProperty Name="SIC_Code___Description" ColumnName="SIC Code &amp; Description" />
+                <ScalarProperty Name="Total_Revenue" ColumnName="Total Revenue" />
+                <ScalarProperty Name="Year_Found" ColumnName="Year Found" />
+                <ScalarProperty Name="Total_Employees" ColumnName="Total Employees" />
+                <ScalarProperty Name="HeadQuarters_Address" ColumnName="HeadQuarters Address" />
+                <ScalarProperty Name="Telephone_Number" ColumnName="Telephone Number" />
+                <ScalarProperty Name="Key_Personnel" ColumnName="Key Personnel" />
+                <ScalarProperty Name="Parent_Company" ColumnName="Parent Company" />
+                <ScalarProperty Name="Subsidaries" ColumnName="Subsidaries" />
+                <ScalarProperty Name="Past_or_Present_Insured" ColumnName="Past or Present Insured" />
+                <ScalarProperty Name="Submission_Activity" ColumnName="Submission Activity" />
+                <ScalarProperty Name="GURU" ColumnName="GURU" />
+                <ScalarProperty Name="FEIN_Number" ColumnName="FEIN Number" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

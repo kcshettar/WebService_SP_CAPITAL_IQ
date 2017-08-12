@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[WebService] (
+    [Asset]                    NCHAR (50)      NULL,
+    [Business Description]     NCHAR (2000)    NULL,
+    [Website]                  NCHAR (25)      NULL,
+    [Company Type]             NCHAR (20)      NULL,
+    [Stock Symbol]             CHAR (50)       NULL,
+    [Market Cap]               NUMERIC (19, 4) NULL,
+    [DUNS Number]              VARCHAR (20)    NULL,
+    [NAICS Code & Description] VARCHAR (50)    NULL,
+    [SIC Code & Description]   VARCHAR (50)    NULL,
+    [Total Revenue]            NUMERIC (19, 4) NULL,
+    [Year Found]               DATE            NULL,
+    [Total Employees]          INT             NULL,
+    [HeadQuarters Address]     NCHAR (150)     NULL,
+    [Telephone Number]         VARCHAR (15)    NULL,
+    [Key Personnel]            NCHAR (1000)    NULL,
+    [Parent Company]           NCHAR (50)      NULL,
+    [Subsidaries]              NCHAR (500)     NULL,
+    [Past or Present Insured]  CHAR (10)       NULL,
+    [Submission Activity]      VARCHAR (30)    NULL,
+    [GURU]                     NCHAR (25)      NULL,
+    [FEIN Number]              VARCHAR (20)    NULL,
+    [id]                       INT         NOT NULL,
+    CONSTRAINT [PK_WebService] PRIMARY KEY CLUSTERED ([id] ASC)
+);
+

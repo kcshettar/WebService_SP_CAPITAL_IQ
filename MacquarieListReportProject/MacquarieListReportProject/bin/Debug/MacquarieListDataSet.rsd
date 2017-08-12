@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>MacquarieList</DataSourceReference>
+      <CommandText>SELECT        Asset, [Business Description], Website, [Company Type], [Stock Symbol], [Market Cap], [DUNS Number], [NAICS Code &amp; Description], [SIC Code &amp; Description], 
+                         [Total Revenue], [Year Found], [Total Employees], [HeadQuarters Address], [Telephone Number], [Key Personnel], [Parent Company], Subsidaries, 
+                         [Past or Present Insured], [Submission Activity], GURU, [FEIN Number]
+FROM            WebService</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Asset">
+        <DataField>Asset</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Business_Description">
+        <DataField>Business Description</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Website">
+        <DataField>Website</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Company_Type">
+        <DataField>Company Type</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Stock_Symbol">
+        <DataField>Stock Symbol</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Market_Cap">
+        <DataField>Market Cap</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="DUNS_Number">
+        <DataField>DUNS Number</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="NAICS_Code___Description">
+        <DataField>NAICS Code &amp; Description</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SIC_Code___Description">
+        <DataField>SIC Code &amp; Description</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Total_Revenue">
+        <DataField>Total Revenue</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Year_Found">
+        <DataField>Year Found</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Total_Employees">
+        <DataField>Total Employees</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="HeadQuarters_Address">
+        <DataField>HeadQuarters Address</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Telephone_Number">
+        <DataField>Telephone Number</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Key_Personnel">
+        <DataField>Key Personnel</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Parent_Company">
+        <DataField>Parent Company</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Subsidaries">
+        <DataField>Subsidaries</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Past_or_Present_Insured">
+        <DataField>Past or Present Insured</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Submission_Activity">
+        <DataField>Submission Activity</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="GURU">
+        <DataField>GURU</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FEIN_Number">
+        <DataField>FEIN Number</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

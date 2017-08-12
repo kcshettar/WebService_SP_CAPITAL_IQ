@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="WebService2">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Asset" Type="nchar" MaxLength="255" />
+    <Property Name="Business Description" Type="varchar" MaxLength="3500" />
+    <Property Name="Website" Type="nvarchar" MaxLength="250" />
+    <Property Name="Company Type" Type="varchar" MaxLength="100" />
+    <Property Name="Stock Symbol" Type="nvarchar" MaxLength="50" />
+    <Property Name="Market Cap" Type="numeric" Precision="19" Scale="2" />
+    <Property Name="DUNS Number" Type="varchar" MaxLength="50" />
+    <Property Name="NAICS Code" Type="int" />
+    <Property Name="NAICS Description" Type="varchar" MaxLength="250" />
+    <Property Name="SIC Code" Type="int" />
+    <Property Name="SIC Description" Type="varchar" MaxLength="250" />
+    <Property Name="Total Revenue" Type="numeric" Precision="19" Scale="2" />
+    <Property Name="Year Found" Type="int" />
+    <Property Name="Total Employees" Type="float" />
+    <Property Name="HeadQuarters Address" Type="varchar" MaxLength="250" />
+    <Property Name="Telephone Number" Type="varchar" MaxLength="50" />
+    <Property Name="Key Personnel" Type="nvarchar" MaxLength="3500" />
+    <Property Name="Parent Company" Type="varchar" MaxLength="250" />
+    <Property Name="Past or Present Insured" Type="bit" />
+    <Property Name="Submission Activity" Type="varchar" MaxLength="250" />
+    <Property Name="GURU" Type="varchar" MaxLength="250" />
+    <Property Name="FEIN Number" Type="varchar" MaxLength="25" />
+    <Property Name="SubsidiaryList" Type="nvarchar(max)" />
+    <Property Name="QuickMatchID" Type="nvarchar" MaxLength="50" />
+    <Property Name="QuickMatchName" Type="nchar" MaxLength="255" />
+    <Property Name="AddressSource" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityContainer Name="StoreContainer">
+    <EntitySet Name="WebService2" EntityType="Self.WebService2" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

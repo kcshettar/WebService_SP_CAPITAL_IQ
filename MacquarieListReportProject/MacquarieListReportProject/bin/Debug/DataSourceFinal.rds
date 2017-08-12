@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSourceFinal">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=svusryesql1dz\sql1d1;Initial Catalog=MacquarieData</ConnectString>
+    <IntegratedSecurity>true</IntegratedSecurity>
+    <Prompt>Specify a user name and password for data source DataSourceFinal</Prompt>
+  </ConnectionProperties>
+  <DataSourceID>fee2fa60-657c-469d-baae-43acb711bcf6</DataSourceID>
+</RptDataSource>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MacquarieDataModelStoreContainer" CdmEntityContainer="MacquarieDataEntities">
+    <EntitySetMapping Name="WebServices">
+      <EntityTypeMapping TypeName="MacquarieDataModel.WebService">
+        <MappingFragment StoreEntitySet="WebService">
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="Business_Description" ColumnName="Business Description" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Company_Type" ColumnName="Company Type" />
+          <ScalarProperty Name="Stock_Symbol" ColumnName="Stock Symbol" />
+          <ScalarProperty Name="Market_Cap" ColumnName="Market Cap" />
+          <ScalarProperty Name="DUNS_Number" ColumnName="DUNS Number" />
+          <ScalarProperty Name="NAICS_Code___Description" ColumnName="NAICS Code &amp; Description" />
+          <ScalarProperty Name="SIC_Code___Description" ColumnName="SIC Code &amp; Description" />
+          <ScalarProperty Name="Total_Revenue" ColumnName="Total Revenue" />
+          <ScalarProperty Name="Year_Found" ColumnName="Year Found" />
+          <ScalarProperty Name="Total_Employees" ColumnName="Total Employees" />
+          <ScalarProperty Name="HeadQuarters_Address" ColumnName="HeadQuarters Address" />
+          <ScalarProperty Name="Telephone_Number" ColumnName="Telephone Number" />
+          <ScalarProperty Name="Key_Personnel" ColumnName="Key Personnel" />
+          <ScalarProperty Name="Parent_Company" ColumnName="Parent Company" />
+          <ScalarProperty Name="Subsidaries" ColumnName="Subsidaries" />
+          <ScalarProperty Name="Past_or_Present_Insured" ColumnName="Past or Present Insured" />
+          <ScalarProperty Name="Submission_Activity" ColumnName="Submission Activity" />
+          <ScalarProperty Name="GURU" ColumnName="GURU" />
+          <ScalarProperty Name="FEIN_Number" ColumnName="FEIN Number" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

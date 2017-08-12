@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MacquarieDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="WebService">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Asset" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Business_Description" Type="String" MaxLength="2000" FixedLength="true" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Company_Type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Stock_Symbol" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Market_Cap" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DUNS_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NAICS_Code___Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SIC_Code___Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Revenue" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Year_Found" Type="DateTime" Precision="0" />
+    <Property Name="Total_Employees" Type="Int32" />
+    <Property Name="HeadQuarters_Address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="Telephone_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Key_Personnel" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="Parent_Company" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Subsidaries" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="Past_or_Present_Insured" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Submission_Activity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="GURU" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FEIN_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MacquarieDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="WebServices" EntityType="Self.WebService" />
+  </EntityContainer>
+</Schema>

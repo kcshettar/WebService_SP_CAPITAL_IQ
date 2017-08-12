@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MacquarieDataModelWebService2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MacquarieDataEntitiesWebService2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="WebService2" EntityType="MacquarieDataModelWebService2.WebService2" />
+  </EntityContainer>
+  <EntityType Name="WebService2">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Asset" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="Business_Description" Type="String" MaxLength="3500" FixedLength="false" Unicode="false" />
+    <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Company_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Stock_Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Market_Cap" Type="Decimal" Precision="19" Scale="2" />
+    <Property Name="DUNS_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NAICS_Code" Type="Int32" />
+    <Property Name="NAICS_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SIC_Code" Type="Int32" />
+    <Property Name="SIC_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Revenue" Type="Decimal" Precision="19" Scale="2" />
+    <Property Name="Year_Found" Type="Int32" />
+    <Property Name="Total_Employees" Type="Double" />
+    <Property Name="HeadQuarters_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Key_Personnel" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
+    <Property Name="Parent_Company" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Past_or_Present_Insured" Type="Boolean" />
+    <Property Name="Submission_Activity" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="GURU" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FEIN_Number" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SubsidiaryList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QuickMatchID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QuickMatchName" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="AddressSource" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
