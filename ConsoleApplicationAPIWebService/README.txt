@@ -12,25 +12,25 @@ The data extraction process can be automated by using API’s. Additionally, thi
 and saves time. 
 
 Project Names:
-1. Integration Services MacquarieTestNew: (SSIS Package)
+1. IntegrationServicesMacquarieAsset: (SSIS Package)
     - This is an Integration Services Project
-    - This Project contains a Data Flow Task. 
-    - The package will extract the values from column name 'Asset' from the source excel file.
-    - Sorts the values in Ascending order
+    - This Project contains a Data Flow Task
+    - The package will extract the values from column name 'Asset' & 'Address' from the source excel file
+    - Sorts the values in Ascending order according to 'Asset'
     - Dumps the data into OLE DB Destination i.e. MacquarieData Database and assigns primary key to each Asset name
 
 2. ConsoleApplicationAPIWebService:
     - This is a Console Application Project
     - This Application is built using C#
-    - Refer Developer's Guide (SPCapitalIQAPIDevelopersGuide_v20046.pdf) before working with source code
+    - Refer Developer's Guide (SPCapitalIQAPIDevelopersGuide_v20046.pdf) before using source code
     - This makes requests to the API to get the data back from the S&P Capital IQ
     - The response data is stored into several objects. Clear the requests everytime in the source code to avoid duplicate requests to API
-    - The source code has all the necessary comments to understand the process
+    - The source code has all the necessary comments to understand the process & code
     - There's option to access data with JSON format that is present in the current source code
     - A model view is created using the entity framework to access and store data to the Database
     - Calculate total number of requests: (Total Number of mnemonics * Total number of times invoked to data services)
     [Note: If a mnemonic gives back 'n' number of responses, it's still considered as one request E.g. List of Key Personnel in a company]
-    - Request count & Execution time calculation logic has been already added in the source code
+    - Request count & Execution time calculation logic has been already added in the source code. Refer the source code for more logics
 
 3. MacquarieListReportProject:
     - This is a Reporting Services Project
@@ -73,22 +73,22 @@ This executes by reading the Asset names row by row from the database. Requests 
 As the report is already deployed, just refresh the weblink to load the recent data from the database. [WebLink provided at the end of document]
 
 Possible Exceptions: 
-* If PrimaryKey ID in the table WebService2 is not in order starting from 1, there'll be exception.
+* All exceptions handled
 
 To improve things:
 * Handling Duplicates in the database
-* QuickMatch Concept - Improving accuracy
-* Handling the Possible Exception
+* QuickMatch Concept - Improving accuracy of the Asset name match. 
+I've written a code that uses zipcode as a common filed to improve accuracy so far using regular expresion. 
 
 Project Locations, Links & other useful information:
 * Login Credentials
 API System Administrator : API Support 
 User Id:  ewu@navg.com
-Pwd: Navigators1API
+Pwd: N********s1API
 
 API Project : Source Code Credentials
 User Id: Apiadmin@navg.com
-Pwd: Navigators2API
+Pwd: N********s2API
 
 * API Support
 http://support.standardandpoors.com/gds/index.php?option=com_content&view=article&id=25&Itemid=301

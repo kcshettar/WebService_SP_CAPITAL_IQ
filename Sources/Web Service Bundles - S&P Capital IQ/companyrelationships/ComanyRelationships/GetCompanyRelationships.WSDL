@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.capitaliq.com/CIQDotNet/api/current/GetCompanyRelationships" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.capitaliq.com/CIQDotNet/api/current/GetCompanyRelationships" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.capitaliq.com/CIQDotNet/api/current/GetCompanyRelationships">
+      <s:element name="GetCompanyRelationships">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyRelationshipTypeId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeSubsidiariesFlag" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeInvestmentsFlag" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompanyRelationshipsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyRelationshipsResult" type="tns:ArrayOfCompanyRelationship" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompanyRelationship">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyRelationship" nillable="true" type="tns:CompanyRelationship" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyRelationship">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InputCompanyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyRelId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyRelationshipTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyRelationshipTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId2" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyTypeId2" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyTypeName2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyStatusTypeId2" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyStatusTypeName2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessDescription2" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCompanyRelationshipsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyRelationships" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyRelationshipsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyRelationshipsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GetCompanyRelationshipsSoap">
+    <wsdl:operation name="GetCompanyRelationships">
+      <wsdl:input message="tns:GetCompanyRelationshipsSoapIn" />
+      <wsdl:output message="tns:GetCompanyRelationshipsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetCompanyRelationshipsHttpPost" />
+  <wsdl:binding name="GetCompanyRelationshipsSoap" type="tns:GetCompanyRelationshipsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyRelationships">
+      <soap:operation soapAction="http://www.capitaliq.com/CIQDotNet/api/current/GetCompanyRelationships/GetCompanyRelationships" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetCompanyRelationshipsSoap12" type="tns:GetCompanyRelationshipsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyRelationships">
+      <soap12:operation soapAction="http://www.capitaliq.com/CIQDotNet/api/current/GetCompanyRelationships/GetCompanyRelationships" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetCompanyRelationshipsHttpPost" type="tns:GetCompanyRelationshipsHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="GetCompanyRelationships">
+    <wsdl:port name="GetCompanyRelationshipsSoap" binding="tns:GetCompanyRelationshipsSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/current/GetCompanyRelationships.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetCompanyRelationshipsSoap12" binding="tns:GetCompanyRelationshipsSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/current/GetCompanyRelationships.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetCompanyRelationshipsHttpPost" binding="tns:GetCompanyRelationshipsHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/current/GetCompanyRelationships.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

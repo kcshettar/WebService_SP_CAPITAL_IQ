@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.capitaliq.com/CIQDotNet/ReferenceData" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.capitaliq.com/CIQDotNet/ReferenceData" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.capitaliq.com/CIQDotNet/ReferenceData">
+      <s:element name="GetReferenceDataInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="inReferenceDataTypeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReferenceDataInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReferenceDataInfoResult" type="tns:ArrayOfReferenceDataInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReferenceDataInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReferenceDataInfo" nillable="true" type="tns:ReferenceDataInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReferenceDataInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReferenceDataID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceDataName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RecommendationReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ContributorCompanyID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StandardizedValue" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AnalystReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ResearchContributorId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PersonID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentProFlag" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StateReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CountryID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Abbreviation" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ScaleReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Factor" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="HoldingAdjustmentReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsNegativeAdjustment" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CompanyRelTypeReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CompanyRelTypeGroup" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReferenceDataWStringID">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ReferenceDataDescription" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CalculationType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ReferenceDataDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FinancialGroupId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ContributorReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ResearchContributorStatusID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="hasResearch" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="hasEstimates" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CountryReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CountryCode" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CountrySymbol" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PrimarySubTypeId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CurrencyReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CountryID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ISOCode" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MajorCurrencyFlag" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ActiveFlag" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DataItemReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DataCollectionTypeId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DataCollectionTypeName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ExchangeGroupReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ExchangeGroup" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ExchangeReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ExchangeName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FormTypeReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormTypeDescription" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GeographyReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="SubParentId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ChildLevel" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IndustryReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="SubParentId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ChildLevel" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LanguageReferenceDataType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReferenceDataInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ISO639Code" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ArrayOfReferenceDataInfo" nillable="true" type="tns:ArrayOfReferenceDataInfo" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetReferenceDataInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReferenceDataInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetReferenceDataInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReferenceDataInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReferenceDataInfoHttpPostIn">
+    <wsdl:part name="inReferenceDataTypeID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReferenceDataInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfReferenceDataInfo" />
+  </wsdl:message>
+  <wsdl:portType name="ReferenceDataSoap">
+    <wsdl:operation name="GetReferenceDataInfo">
+      <wsdl:input message="tns:GetReferenceDataInfoSoapIn" />
+      <wsdl:output message="tns:GetReferenceDataInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ReferenceDataHttpPost">
+    <wsdl:operation name="GetReferenceDataInfo">
+      <wsdl:input message="tns:GetReferenceDataInfoHttpPostIn" />
+      <wsdl:output message="tns:GetReferenceDataInfoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReferenceDataSoap" type="tns:ReferenceDataSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReferenceDataInfo">
+      <soap:operation soapAction="http://www.capitaliq.com/CIQDotNet/ReferenceData/GetReferenceDataInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReferenceDataSoap12" type="tns:ReferenceDataSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReferenceDataInfo">
+      <soap12:operation soapAction="http://www.capitaliq.com/CIQDotNet/ReferenceData/GetReferenceDataInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReferenceDataHttpPost" type="tns:ReferenceDataHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetReferenceDataInfo">
+      <http:operation location="/GetReferenceDataInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReferenceData">
+    <wsdl:port name="ReferenceDataSoap" binding="tns:ReferenceDataSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/current/ReferenceData.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReferenceDataSoap12" binding="tns:ReferenceDataSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/current/ReferenceData.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReferenceDataHttpPost" binding="tns:ReferenceDataHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/current/ReferenceData.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

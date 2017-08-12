@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://capitaliq.com/ciqdotnet/filings/SearchDocuments" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://capitaliq.com/ciqdotnet/filings/SearchDocuments" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://capitaliq.com/ciqdotnet/filings/SearchDocuments">
+      <s:element name="SearchDocuments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="FilingStartDateUTC" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FilingEndDateUTC" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessedStartDateUTC" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessedEndDateUTC" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormTypeId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormGroupId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeywordText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchDocumentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDocumentsResult" type="tns:ArrayOfDocumentInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocumentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentInfo" nillable="true" type="tns:DocumentInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocumentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Companies" type="tns:ArrayOfFilingEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReportingOwners" type="tns:ArrayOfFilingEntity" />
+          <s:element minOccurs="1" maxOccurs="1" name="VersionId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierDocumentId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FormTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FiledDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodEndDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="VersionFormatTypeIds" type="tns:ArrayOfDocumentOutputType" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileSizeInBytes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SourceId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFilingEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FilingEntity" nillable="true" type="tns:FilingEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FilingEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObjectID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerType" type="tns:ReportingOwnerType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ReportingOwnerType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Person" />
+          <s:enumeration value="Company" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfDocumentOutputType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentOutputType" type="tns:DocumentOutputType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DocumentOutputType">
+        <s:restriction base="s:string">
+          <s:enumeration value="html" />
+          <s:enumeration value="xls" />
+          <s:enumeration value="doc" />
+          <s:enumeration value="pdf" />
+          <s:enumeration value="raw" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SearchDocumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDocuments" />
+  </wsdl:message>
+  <wsdl:message name="SearchDocumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SearchDocumentsServiceSoap">
+    <wsdl:operation name="SearchDocuments">
+      <wsdl:input message="tns:SearchDocumentsSoapIn" />
+      <wsdl:output message="tns:SearchDocumentsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SearchDocumentsServiceHttpPost" />
+  <wsdl:binding name="SearchDocumentsServiceSoap" type="tns:SearchDocumentsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchDocuments">
+      <soap:operation soapAction="http://capitaliq.com/ciqdotnet/filings/SearchDocuments/SearchDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchDocumentsServiceSoap12" type="tns:SearchDocumentsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchDocuments">
+      <soap12:operation soapAction="http://capitaliq.com/ciqdotnet/filings/SearchDocuments/SearchDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchDocumentsServiceHttpPost" type="tns:SearchDocumentsServiceHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="SearchDocumentsService">
+    <wsdl:port name="SearchDocumentsServiceSoap" binding="tns:SearchDocumentsServiceSoap">
+      <soap:address location="https://api.capitaliq.com/CIQDotNet/api/1.0/SearchDocuments.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SearchDocumentsServiceSoap12" binding="tns:SearchDocumentsServiceSoap12">
+      <soap12:address location="https://api.capitaliq.com/CIQDotNet/api/1.0/SearchDocuments.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SearchDocumentsServiceHttpPost" binding="tns:SearchDocumentsServiceHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/CIQDotNet/api/1.0/SearchDocuments.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

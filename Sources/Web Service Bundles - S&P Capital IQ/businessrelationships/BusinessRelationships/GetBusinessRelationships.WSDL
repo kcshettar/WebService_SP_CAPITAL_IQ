@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.capitaliq.com/CIQDotNet/api/current/GetBusinessRelationships" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.capitaliq.com/CIQDotNet/api/current/GetBusinessRelationships" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.capitaliq.com/CIQDotNet/api/current/GetBusinessRelationships">
+      <s:element name="GetBusinessRelationships">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="BusinessRelationshipTypeId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeSubsidiariesFlag" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeInvestmentsFlag" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludePriorFlag" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBusinessRelationshipsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBusinessRelationshipsResult" type="tns:ArrayOfBusinessRelationship" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusinessRelationship">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessRelationship" nillable="true" type="tns:BusinessRelationship" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessRelationship">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InputCompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputCompanyName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId2" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessRelationshipTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessRelationshipTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessRelationshipSourceTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessRelationshipSourceTypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SimpleIndustryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SimpleIndustryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubIndustryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubIndustryName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetBusinessRelationshipsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBusinessRelationships" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessRelationshipsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBusinessRelationshipsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GetBusinessRelationshipsSoap">
+    <wsdl:operation name="GetBusinessRelationships">
+      <wsdl:input message="tns:GetBusinessRelationshipsSoapIn" />
+      <wsdl:output message="tns:GetBusinessRelationshipsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetBusinessRelationshipsHttpPost" />
+  <wsdl:binding name="GetBusinessRelationshipsSoap" type="tns:GetBusinessRelationshipsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBusinessRelationships">
+      <soap:operation soapAction="http://www.capitaliq.com/CIQDotNet/api/current/GetBusinessRelationships/GetBusinessRelationships" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetBusinessRelationshipsSoap12" type="tns:GetBusinessRelationshipsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBusinessRelationships">
+      <soap12:operation soapAction="http://www.capitaliq.com/CIQDotNet/api/current/GetBusinessRelationships/GetBusinessRelationships" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetBusinessRelationshipsHttpPost" type="tns:GetBusinessRelationshipsHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="GetBusinessRelationships">
+    <wsdl:port name="GetBusinessRelationshipsSoap" binding="tns:GetBusinessRelationshipsSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/current/GetBusinessRelationships.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetBusinessRelationshipsSoap12" binding="tns:GetBusinessRelationshipsSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/current/GetBusinessRelationships.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetBusinessRelationshipsHttpPost" binding="tns:GetBusinessRelationshipsHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/current/GetBusinessRelationships.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://capitaliq.com/ciqdotnet/filings/GetDocumentDetails" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://capitaliq.com/ciqdotnet/filings/GetDocumentDetails" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://capitaliq.com/ciqdotnet/filings/GetDocumentDetails">
+      <s:element name="GetDocumentDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SupplierDocumentId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="VersionId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TargetFormat" type="tns:DocumentOutputType" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="DocumentOutputType">
+        <s:restriction base="s:string">
+          <s:enumeration value="html" />
+          <s:enumeration value="xls" />
+          <s:enumeration value="doc" />
+          <s:enumeration value="pdf" />
+          <s:enumeration value="raw" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetDocumentDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentDetailsResult" type="tns:FilingsDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FilingsDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierDocumentId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VersionId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnchorList" type="tns:ArrayOfDataValueLink" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDataValueLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DataValueLink" nillable="true" type="tns:DataValueLink" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DataValueLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DataValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnchorNameList" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDocumentDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocumentDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GetDocumentDetailsServiceSoap">
+    <wsdl:operation name="GetDocumentDetails">
+      <wsdl:input message="tns:GetDocumentDetailsSoapIn" />
+      <wsdl:output message="tns:GetDocumentDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetDocumentDetailsServiceHttpPost" />
+  <wsdl:binding name="GetDocumentDetailsServiceSoap" type="tns:GetDocumentDetailsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDocumentDetails">
+      <soap:operation soapAction="http://capitaliq.com/ciqdotnet/filings/GetDocumentDetails/GetDocumentDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetDocumentDetailsServiceSoap12" type="tns:GetDocumentDetailsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDocumentDetails">
+      <soap12:operation soapAction="http://capitaliq.com/ciqdotnet/filings/GetDocumentDetails/GetDocumentDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetDocumentDetailsServiceHttpPost" type="tns:GetDocumentDetailsServiceHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="GetDocumentDetailsService">
+    <wsdl:port name="GetDocumentDetailsServiceSoap" binding="tns:GetDocumentDetailsServiceSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/1.0/GetDocumentDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetDocumentDetailsServiceSoap12" binding="tns:GetDocumentDetailsServiceSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/1.0/GetDocumentDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetDocumentDetailsServiceHttpPost" binding="tns:GetDocumentDetailsServiceHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/1.0/GetDocumentDetails.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

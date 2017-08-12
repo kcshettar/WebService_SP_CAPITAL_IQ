@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates" xmlns:s1="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/AbstractTypes" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates">
+      <s:element name="GetEstimateConsensusAbsolute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="tradingItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startPeriodDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endPeriodDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="periodTypeId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyConversionMethod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userObjectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEstimateConsensusAbsoluteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstimateConsensusAbsoluteResult" type="tns:ArrayOfEstimateConsensus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEstimateConsensus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EstimateConsensus" nillable="true" type="tns:EstimateConsensus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstimateConsensus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TradingItemId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Periods" type="tns:ArrayOfPeriod" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstimateConsensusDataValues" type="tns:ArrayOfEstimateConsensusDataValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPeriod">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Period" nillable="true" type="tns:Period" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Period">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodTypeId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FiscalYear" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FiscalQuarter" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CalendarYear" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CalendarQuarter" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodOffset" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodEndDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEstimateConsensusDataValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EstimateConsensusDataValue" nillable="true" type="tns:EstimateConsensusDataValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstimateConsensusDataValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DataItemId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataItemValue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScaleId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitTypeId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstimateStartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstimateExpireDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyConversionDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyConversionRate" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyConversionMethod" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Footnote" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEstimateConsensusRelative">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="tradingItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startPeriodOffset" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="endPeriodOffset" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="periodTypeId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyConversionMethod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userObjectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstimateConsensusRelativeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstimateConsensusRelativeResult" type="tns:ArrayOfEstimateConsensus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstimateDetailAbsolute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="tradingItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="researchContributorId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startPeriodDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endPeriodDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="periodTypeId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyConversionMethod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userObjectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstimateDetailAbsoluteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstimateDetailAbsoluteResult" type="tns:ArrayOfEstimateDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEstimateDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EstimateDetail" nillable="true" type="tns:EstimateDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstimateDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TradingItemId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResearchContributorId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodTypeId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FiscalYear" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FiscalQuarter" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CalendarYear" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CalendarQuarter" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodEndDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodOffset" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstimateDetailDataValues" type="tns:ArrayOfEstimateDetailDataValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEstimateDetailDataValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EstimateDetailDataValue" nillable="true" type="tns:EstimateDetailDataValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstimateDetailDataValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DataItemId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataItemValue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScaleId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitTypeId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstimateStartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstimateExpireDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludedFromConsensusFlag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExclusionComment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProfessionalId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnalystName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyConversionDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyConversionRate" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyConversionMethod" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEstimateDetailRelative">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="tradingItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="researchContributorId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startPeriodOffset" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="endPeriodOffset" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="periodTypeId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="dataItemId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endAsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="currencyConversionMethod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userObjectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstimateDetailRelativeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstimateDetailRelativeResult" type="tns:ArrayOfEstimateDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfEstimateConsensus" nillable="true" type="tns:ArrayOfEstimateConsensus" />
+      <s:element name="ArrayOfEstimateDetail" nillable="true" type="tns:ArrayOfEstimateDetail" />
+    </s:schema>
+    <s:schema targetNamespace="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetEstimateConsensusAbsoluteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstimateConsensusAbsolute" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateConsensusAbsoluteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstimateConsensusAbsoluteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateConsensusRelativeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstimateConsensusRelative" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateConsensusRelativeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstimateConsensusRelativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailAbsoluteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstimateDetailAbsolute" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailAbsoluteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstimateDetailAbsoluteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailRelativeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstimateDetailRelative" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailRelativeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstimateDetailRelativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateConsensusAbsoluteHttpPostIn">
+    <wsdl:part name="companyId" type="s1:StringArray" />
+    <wsdl:part name="tradingItemId" type="s1:StringArray" />
+    <wsdl:part name="startPeriodDate" type="s:string" />
+    <wsdl:part name="endPeriodDate" type="s:string" />
+    <wsdl:part name="periodTypeId" type="s1:StringArray" />
+    <wsdl:part name="dataItemId" type="s1:StringArray" />
+    <wsdl:part name="startAsOfDate" type="s:string" />
+    <wsdl:part name="endAsOfDate" type="s:string" />
+    <wsdl:part name="currencyId" type="s:string" />
+    <wsdl:part name="currencyConversionMethod" type="s:string" />
+    <wsdl:part name="userObjectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateConsensusAbsoluteHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEstimateConsensus" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateConsensusRelativeHttpPostIn">
+    <wsdl:part name="companyId" type="s1:StringArray" />
+    <wsdl:part name="tradingItemId" type="s1:StringArray" />
+    <wsdl:part name="startPeriodOffset" type="s:string" />
+    <wsdl:part name="endPeriodOffset" type="s:string" />
+    <wsdl:part name="periodTypeId" type="s1:StringArray" />
+    <wsdl:part name="dataItemId" type="s1:StringArray" />
+    <wsdl:part name="startAsOfDate" type="s:string" />
+    <wsdl:part name="endAsOfDate" type="s:string" />
+    <wsdl:part name="currencyId" type="s:string" />
+    <wsdl:part name="currencyConversionMethod" type="s:string" />
+    <wsdl:part name="userObjectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateConsensusRelativeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEstimateConsensus" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailAbsoluteHttpPostIn">
+    <wsdl:part name="companyId" type="s1:StringArray" />
+    <wsdl:part name="tradingItemId" type="s1:StringArray" />
+    <wsdl:part name="researchContributorId" type="s1:StringArray" />
+    <wsdl:part name="startPeriodDate" type="s:string" />
+    <wsdl:part name="endPeriodDate" type="s:string" />
+    <wsdl:part name="periodTypeId" type="s1:StringArray" />
+    <wsdl:part name="dataItemId" type="s1:StringArray" />
+    <wsdl:part name="startAsOfDate" type="s:string" />
+    <wsdl:part name="endAsOfDate" type="s:string" />
+    <wsdl:part name="currencyId" type="s:string" />
+    <wsdl:part name="currencyConversionMethod" type="s:string" />
+    <wsdl:part name="userObjectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailAbsoluteHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEstimateDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailRelativeHttpPostIn">
+    <wsdl:part name="companyId" type="s1:StringArray" />
+    <wsdl:part name="tradingItemId" type="s1:StringArray" />
+    <wsdl:part name="researchContributorId" type="s1:StringArray" />
+    <wsdl:part name="startPeriodOffset" type="s:string" />
+    <wsdl:part name="endPeriodOffset" type="s:string" />
+    <wsdl:part name="periodTypeId" type="s1:StringArray" />
+    <wsdl:part name="dataItemId" type="s1:StringArray" />
+    <wsdl:part name="startAsOfDate" type="s:string" />
+    <wsdl:part name="endAsOfDate" type="s:string" />
+    <wsdl:part name="currencyId" type="s:string" />
+    <wsdl:part name="currencyConversionMethod" type="s:string" />
+    <wsdl:part name="userObjectId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEstimateDetailRelativeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEstimateDetail" />
+  </wsdl:message>
+  <wsdl:portType name="EstimatesSoap">
+    <wsdl:operation name="GetEstimateConsensus">
+      <wsdl:input name="GetEstimateConsensusAbsolute" message="tns:GetEstimateConsensusAbsoluteSoapIn" />
+      <wsdl:output name="GetEstimateConsensusAbsolute" message="tns:GetEstimateConsensusAbsoluteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateConsensus">
+      <wsdl:input name="GetEstimateConsensusRelative" message="tns:GetEstimateConsensusRelativeSoapIn" />
+      <wsdl:output name="GetEstimateConsensusRelative" message="tns:GetEstimateConsensusRelativeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <wsdl:input name="GetEstimateDetailAbsolute" message="tns:GetEstimateDetailAbsoluteSoapIn" />
+      <wsdl:output name="GetEstimateDetailAbsolute" message="tns:GetEstimateDetailAbsoluteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <wsdl:input name="GetEstimateDetailRelative" message="tns:GetEstimateDetailRelativeSoapIn" />
+      <wsdl:output name="GetEstimateDetailRelative" message="tns:GetEstimateDetailRelativeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EstimatesHttpPost">
+    <wsdl:operation name="GetEstimateConsensus">
+      <wsdl:input name="GetEstimateConsensusAbsolute" message="tns:GetEstimateConsensusAbsoluteHttpPostIn" />
+      <wsdl:output name="GetEstimateConsensusAbsolute" message="tns:GetEstimateConsensusAbsoluteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateConsensus">
+      <wsdl:input name="GetEstimateConsensusRelative" message="tns:GetEstimateConsensusRelativeHttpPostIn" />
+      <wsdl:output name="GetEstimateConsensusRelative" message="tns:GetEstimateConsensusRelativeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <wsdl:input name="GetEstimateDetailAbsolute" message="tns:GetEstimateDetailAbsoluteHttpPostIn" />
+      <wsdl:output name="GetEstimateDetailAbsolute" message="tns:GetEstimateDetailAbsoluteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <wsdl:input name="GetEstimateDetailRelative" message="tns:GetEstimateDetailRelativeHttpPostIn" />
+      <wsdl:output name="GetEstimateDetailRelative" message="tns:GetEstimateDetailRelativeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EstimatesSoap" type="tns:EstimatesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEstimateConsensus">
+      <soap:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateConsensusAbsolute" style="document" />
+      <wsdl:input name="GetEstimateConsensusAbsolute">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateConsensusAbsolute">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateConsensus">
+      <soap:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateConsensusRelative" style="document" />
+      <wsdl:input name="GetEstimateConsensusRelative">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateConsensusRelative">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <soap:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateDetailAbsolute" style="document" />
+      <wsdl:input name="GetEstimateDetailAbsolute">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateDetailAbsolute">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <soap:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateDetailRelative" style="document" />
+      <wsdl:input name="GetEstimateDetailRelative">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateDetailRelative">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EstimatesSoap12" type="tns:EstimatesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEstimateConsensus">
+      <soap12:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateConsensusAbsolute" style="document" />
+      <wsdl:input name="GetEstimateConsensusAbsolute">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateConsensusAbsolute">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateConsensus">
+      <soap12:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateConsensusRelative" style="document" />
+      <wsdl:input name="GetEstimateConsensusRelative">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateConsensusRelative">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <soap12:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateDetailAbsolute" style="document" />
+      <wsdl:input name="GetEstimateDetailAbsolute">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateDetailAbsolute">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <soap12:operation soapAction="http://www.capitaliq.com/CiqDotNet/Estimates/CIQ/Estimates/GetEstimateDetailRelative" style="document" />
+      <wsdl:input name="GetEstimateDetailRelative">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateDetailRelative">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EstimatesHttpPost" type="tns:EstimatesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetEstimateConsensus">
+      <http:operation location="/GetEstimateConsensusAbsolute" />
+      <wsdl:input name="GetEstimateConsensusAbsolute">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateConsensusAbsolute">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateConsensus">
+      <http:operation location="/GetEstimateConsensusRelative" />
+      <wsdl:input name="GetEstimateConsensusRelative">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateConsensusRelative">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <http:operation location="/GetEstimateDetailAbsolute" />
+      <wsdl:input name="GetEstimateDetailAbsolute">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateDetailAbsolute">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimateDetail">
+      <http:operation location="/GetEstimateDetailRelative" />
+      <wsdl:input name="GetEstimateDetailRelative">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="GetEstimateDetailRelative">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Estimates">
+    <wsdl:port name="EstimatesSoap" binding="tns:EstimatesSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/current/Estimates.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EstimatesSoap12" binding="tns:EstimatesSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/current/Estimates.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EstimatesHttpPost" binding="tns:EstimatesHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/current/Estimates.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,164 @@
+Date Created: 06/20/2017
+
+Below are the required feilds apart from the data provided by MACQUARIE list:
+- Navigators Feedback
+- Company Type
+- Headquarters Address
+- Headquarters Tel. No.
+- Stock Symbol - n/a (for unavailable data)
+- Market Cap - n/a (for unavailable data)
+- Year Founded 
+- Total Revenue
+- Number of Employees
+- DUNS Number
+- NAICS Code & Desc
+- SIC Code & Desc
+- Key Personnel (name, roles, etc.)
+- Parent Company
+- Subsidiary Companies
+- Past/Present Insured
+- Company Website
+- Whether or not they are current insured by Navigators
+- Submission status info by the Navigators
+- Interest (Master Tracker)
+- Reason (Master Tracker)
+
+Paremeters provided by MACQUARIE list:
+- Expiration Date
+- Asset Name
+- Total Premium (USD)
+- Sponsor
+- Asset Type
+- Country
+- Broker
+- Coverage Description
+- Nav
+
+
+
+WEB SERVICE BUNDLES: 
+There are 14 Web Service Bundles provided by the S&P Capital IQ website and below is the link for it.
+https://www.capitaliq.com/help/sp-capital-iq-help/web-services/resources-downloads,-wsdl,-files.aspx
+(Most of them require compnay ID as the input parameter)
+
+1. Authenticator: (Important)
+    * Input - Boolean Login(String userName, String password);
+    * Output - Boolean(true/false); Void Logout();
+
+2. Business Relationships: (Not Required)
+    * Input - CompanyId(), BusinessRelationshipTypeId();
+    * Output - An Array of BusinessRelationshipDetails(); InputCompanyId(); InputCompanyName(); Tells relation between two different companies;
+
+3. CompanyInfo: (Important)
+    * Input - CompanyId();
+    * Output - Basic company information such as name, description, Sector, Primary Industry and trading items are returned by this function;
+        -public/private;
+        -company status;
+        -companies website;
+        -BusinessDescription i.e industry, key products, compititors etc;
+        -LongBusinessDescription i.e industry, key products, compititors etc;
+        -Integer PrimaryTradingItemId – The most important security issued by the Company, listed on the most important exchange;
+        -Integer PrimaryExchangeId – Exchange where the primary trading item for this Company is listed;
+        -Integer PrimaryExchangeName – (1-100 characters) Primary the exchange the public company trades on;
+        -Integer PrimaryExchangeSymbol - (1-10 characters) The abbreviation for the exchange (e.g. NYSE, NASD, AMEX) (W1252);
+        -Integer SimpleIndustryId – Identifies the CIQ “simple” industry;
+        -String SimpleIndustryName – (1-500 characters) the text representation of the Simple Industry (W1252).;
+        -Integer SectorID - Identifies the GICS Sector;
+        -String SectorName – (1-500 characters) The text representation of the GICS Sectors (W1252);
+        -Integer IndustryGroupID – Identifies the GICS IndustryGroup;
+        -String IndustryGroupName;
+        -Integer IndustryID – Identifies the GICS Industry;
+        -String IndustryName – (1-500 characters) The text representation of the GICS IndustryName (W1252);
+        -Integer SubIndustryID – Identifies the GICS SubIndustry;
+        -String SubIndustryName – (1-500 characters) The text representation of the GICS SubIndustry (W1252);
+        -Integer UltimateParentCompanyId – The top-level corporate parent of the Company for this search result, according to Current Subsidiary;
+        -String UltimateParentCompanyName - The top-level corporate parent of the CompanyName;
+        -Integer YearFounded : Year the company was founded;
+        -Integer NumberOfEmployees – Number of Employees;
+        -Boolean HasSubsidiariesAndInvestmentsFlag – Does this company have any current subsidiaries?
+        -Boolean HasResearchDocumentsFlag – Has this Company ever had any research documents written about it? (Does not consider entitlements)
+        -Boolean HasFinancialsFlag – Does this Company have Financial data?
+        -Integer TemplateTypeID – Relates to the financial template types for a specific company. Output Types below;
+        -TradingItems;
+        -PrimaryAddressInfo: 
+                Integer AddressID – Uniquely identifies this address; 
+                String City – (0-100 characters) (W1252); 
+                String ZipCode – (0-50 characters) (W1252); 
+                String PhoneNumber – (0-30 characters) Main office phone number (W1252);
+                String FaxNumber – (0-30 characters) Main office fax number (W1252);
+                String StreetAddress1 – (0-200 characters) (W1252);
+                String StreetAddress2 – (0-200 characters) (W1252);
+                String StreetAddress3 – (0-200 characters) (W1252);
+                String StreetAddress4 – (0-200 characters) (W1252);
+                Integer StateId – Relates to State Ref Data;
+                Integer CountryId – Relates to Country Ref Data;
+                String StateName – (0-100 characters) The text version of the StateId (W1252);
+                String CountryName – (0-50 characters) The text version of the CountryId (W1252);
+
+4. Company Relationships: (Not Required)
+    * Input - Integer CompanyId(); Integer CompanyRelationshipTypeID();
+    * Output - An Array of CompanyRelationshipsData Objects –Array contains information about an Input company and its subsidiaries;
+    Basically tells about two different company relationships;
+    (Client should purchase a separate license for this data being returned)
+
+5. Company Resolution: (Not Required)
+    * Input - Search by company TypeName e.g All companies, Public Companies etc;
+    * Output - Search results (Basically a search engine);
+
+6. compititors: (Required)(Required)
+    * Input - Integer CompanyId();
+    * Output - CompetitorInfo();
+
+7. Documents: (Not Required)
+    * Input - (Some are optional) Integer CompanyId(); Datetime FilingStartDateUTC; Datetime FilingEndDateUTC; Datetime ProcessedStartDateUTC; Datetime ProcessedEndDateUTC; 
+              Integer SourceId (); Integer FormTypeId(), Integer FormTypeGroupId(); String CompanyName(); String KeywordFullText;
+    * Output - An Array of DocumentInfo Objects – Each contains information about one Document;
+
+8. Estimates: (Not Required)
+    * Input - Periodic estimates (Datetime);
+    * Output - Returns an array of EstimateConsensus, a container object with header info for a set of detailed estimates data;
+
+9. Financials: (Required)
+    * Input - Multiple inputs like Datetime, CompanyIdList, FinancialDateSet ID etc;
+    * Output - This function returns Standardized financial data for the given company or companies, limited by other criteria;
+
+10. Investment criteria: (Not Required)
+    * Input - CompanyId();
+    * Output - An Array of InvestmentCriteriaDetails () Objects;
+               each containing Industry, Geography, Stage of Interest and Company Bite Size information about a single CompanyId;
+
+11. Key Developments: (Not Important)
+    * Input - Integer CompanyID(); DateTime StartDateUTC; DateTime EndDateUTC; Integer KeyDevelopmentEventTypeId();
+    * Output - Key Development Event Type Data;
+        -Integer CompanyId – CIQ companyID the key development pertains to;
+        -String CompanyName (1-100 characters) – Company name (W1252);
+        -Integer ParentCompanyId – Parent Company parentID;
+        -String ParentCompanyName (1-100 characters) – Parent Company name (W1252);
+        -String CompanyRelTypeName (1-100 characters) – the relationship between the parent (input company) and a related company (subsidiary or investment) to each other;
+        -Integer KeyDevelopmentEventTypeId – Identifier for the type of key development;
+        -Integer KeyDevelopmentRoleTypeId – Indicates relationship between the CompanyId and KeyDevelopment;
+
+12. Professional Details: (Required)
+    * Input - PersonId(); ProfessionalId();
+    * Output - Professional Details;
+        -Integer PersonId – This is a unique identifier for every person in the Capital IQ data set;
+        -String Prefix – (1-50) such as “Mr.”, “Ms.”, etc (W1252);
+        -String Salutation – For some individuals, the name or nickname they prefer to be called;
+        -String FirstName – (1-50) First Name (W1252);
+        -String MiddleName – (0-50) Middle name (W1252);
+        -String LastName – (1-50) Last name (W1252);
+        -String Suffix – (0-50) Tag, such as “Jr.”, “III”, “Ph.D.”, etc (W1252);
+        -Date YearBorn – Year the professional was born;
+        -String PersonBiography – (0-8000) A paragraph describing the experience of the person;
+        -String EmailAddress – (6-100) email address for this professional (W1252);
+        -Boolean DeceasedFlag;
+
+13. Professional Summary: (Required)
+    * Input - Integer CompanyId(), Integer ProfessionalListFilter(), Integer ProfessionalStatusFilter, Integer ProfessionalFunctionId();
+    * Output - The function will return company name, and detailed information about professionals within the organization;
+    This includes their board memberships, affiliations, year born, title and background. The data in this section is collected through 3rd parties and CIQ;
+    Therefore a 3rd party licenses may be required to access this data set;
+
+14. Reference Data: (Not Required)
+    * Input - Integer referenceDataTypeID;
+    * Output - Array of ReferenceDataInfo Objects each containing information about a single reference data point;

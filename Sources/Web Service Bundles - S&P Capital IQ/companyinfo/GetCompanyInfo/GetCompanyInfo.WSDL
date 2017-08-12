@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.capitaliq.com/CiqDotNet/Company/GetCompanyInfo" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.capitaliq.com/CiqDotNet/Company/GetCompanyInfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.capitaliq.com/CiqDotNet/Company/GetCompanyInfo">
+      <s:element name="GetCompanyInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyId" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompanyInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyInfoResult" type="tns:ArrayOfCompanySummary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompanySummary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanySummary" nillable="true" type="tns:CompanySummary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanySummary">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CompanyBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="WebSiteURL" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessDescription" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LongBusinessDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PrimaryTradingItemId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PrimaryExchangeId" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="PrimaryExchangeName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PrimaryExchangeSymbol" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SimpleIndustryId" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="SimpleIndustryName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SectorId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SectorName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IndustryId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IndustryName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SubIndustryId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SubIndustryName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UltimateParentCompanyId" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="UltimateParentCompanyName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="YearFounded" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="NumberOfEmployees" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="HasSubsidiariesAndInvestmentsFlag" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="HasFinancialsFlag" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="TemplateTypeId" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="PrimaryAddressInfo" type="tns:PrimaryCompanyAddress" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CompanyBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyStatusTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyStatusTypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaryTickerSymbol" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrimaryCompanyAddress">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseAddress">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="StreetAddress1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StreetAddress2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StreetAddress3" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StreetAddress4" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StateID" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CountryID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="StateName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CountryName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StateAbbreviation" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseAddress">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipPostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CompanySummary">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TradingItems" type="tns:ArrayOfTradingItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTradingItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TradingItem" nillable="true" type="tns:TradingItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TradingItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TradingItemID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TickerSymbol" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExchangeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeSymbol" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasEstimatesFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActiveFlag" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompanyDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyId" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyDetailResult" type="tns:ArrayOfCompanyDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompanyDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyDetail" nillable="true" type="tns:CompanyDetail" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCompanyInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyDetailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GetCompanyInfoSoap">
+    <wsdl:operation name="GetCompanyInfo">
+      <wsdl:input message="tns:GetCompanyInfoSoapIn" />
+      <wsdl:output message="tns:GetCompanyInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyDetail">
+      <wsdl:input message="tns:GetCompanyDetailSoapIn" />
+      <wsdl:output message="tns:GetCompanyDetailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GetCompanyInfoHttpPost" />
+  <wsdl:binding name="GetCompanyInfoSoap" type="tns:GetCompanyInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyInfo">
+      <soap:operation soapAction="http://www.capitaliq.com/CiqDotNet/Company/GetCompanyInfo/GetCompanyInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyDetail">
+      <soap:operation soapAction="http://www.capitaliq.com/CiqDotNet/Company/GetCompanyInfo/GetCompanyDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetCompanyInfoSoap12" type="tns:GetCompanyInfoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyInfo">
+      <soap12:operation soapAction="http://www.capitaliq.com/CiqDotNet/Company/GetCompanyInfo/GetCompanyInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyDetail">
+      <soap12:operation soapAction="http://www.capitaliq.com/CiqDotNet/Company/GetCompanyInfo/GetCompanyDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetCompanyInfoHttpPost" type="tns:GetCompanyInfoHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="GetCompanyInfo">
+    <wsdl:port name="GetCompanyInfoSoap" binding="tns:GetCompanyInfoSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/current/GetCompanyInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetCompanyInfoSoap12" binding="tns:GetCompanyInfoSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/current/GetCompanyInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetCompanyInfoHttpPost" binding="tns:GetCompanyInfoHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/current/GetCompanyInfo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

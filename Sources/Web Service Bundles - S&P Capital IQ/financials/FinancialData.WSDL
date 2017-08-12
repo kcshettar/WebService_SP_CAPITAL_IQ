@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://www.capitaliq.com/CIQDotNet/Financials/FinancialData" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="https://www.capitaliq.com/CIQDotNet/Financials/FinancialData" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://www.capitaliq.com/CIQDotNet/Financials/FinancialData">
+      <s:element name="GetFinancials">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyIdList" type="tns:ArrayOfInt"/>
+            <s:element minOccurs="0" maxOccurs="1" name="dataItemList" type="tns:ArrayOfInt"/>
+            <s:element minOccurs="0" maxOccurs="1" name="periodTypeIDList" type="tns:ArrayOfInt"/>
+            <s:element minOccurs="1" maxOccurs="1" name="restatementTypeID" type="s:short"/>
+            <s:element minOccurs="1" maxOccurs="1" name="startPeriodDate" type="s:dateTime"/>
+            <s:element minOccurs="1" maxOccurs="1" name="endPeriodDate" type="s:dateTime"/>
+            <s:element minOccurs="1" maxOccurs="1" name="currencyID" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="currencyConversionMethod" type="s:short"/>
+            <s:element minOccurs="1" maxOccurs="1" name="financialDataSetId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFinancialsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFinancialsResult" type="tns:ArrayOfCompanyFinancials"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompanyFinancials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyFinancials" nillable="true" type="tns:CompanyFinancials"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyFinancials">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FinancialGroupId" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TemplateTypeId" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="FinancialInstanceInfoList" type="tns:ArrayOfFinancialInstanceInfo"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFinancialInstanceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FinancialInstanceInfo" nillable="true" type="tns:FinancialInstanceInfo"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FinancialInstanceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FinancialInstanceId" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodTypeId" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CalendarYear" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CalendarQuarter" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="InstanceTypeId" type="s:short"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyConversionMethod" type="s:short"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyId" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ReportedCurrencyId" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FiscalYear" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FiscalQuarter" type="s:short"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PEODate" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FilingDate" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FinancialDataSetId" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DataItemList" type="tns:ArrayOfFinancialDataPoint"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFinancialDataPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FinancialDataPoint" nillable="true" type="tns:FinancialDataPoint"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FinancialDataPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DataItemValue" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ScaleId" nillable="true" type="s:short"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnitTypeId" type="s:short"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataItemId" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AuditableFlag" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Subtotal" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Order" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FinancialDataSetId" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFinTemplateDataItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateTypeID" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="financialDataSetId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFinTemplateDataItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFinTemplateDataItemsResult" type="tns:ArrayOfFinancialDataItem"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFinancialDataItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FinancialDataItem" nillable="true" type="tns:FinancialDataItem"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FinancialDataItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DataItemId" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DataItemName" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfFinancialDataItem" nillable="true" type="tns:ArrayOfFinancialDataItem"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFinancialsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFinancials"/>
+  </wsdl:message>
+  <wsdl:message name="GetFinancialsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFinancialsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetFinTemplateDataItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFinTemplateDataItems"/>
+  </wsdl:message>
+  <wsdl:message name="GetFinTemplateDataItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFinTemplateDataItemsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetFinTemplateDataItemsHttpPostIn">
+    <wsdl:part name="templateTypeID" type="s:string"/>
+    <wsdl:part name="financialDataSetId" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetFinTemplateDataItemsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfFinancialDataItem"/>
+  </wsdl:message>
+  <wsdl:portType name="FinancialDataSoap">
+    <wsdl:operation name="GetFinancials">
+      <wsdl:input message="tns:GetFinancialsSoapIn"/>
+      <wsdl:output message="tns:GetFinancialsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetFinTemplateDataItems">
+      <wsdl:input message="tns:GetFinTemplateDataItemsSoapIn"/>
+      <wsdl:output message="tns:GetFinTemplateDataItemsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FinancialDataHttpPost">
+    <wsdl:operation name="GetFinTemplateDataItems">
+      <wsdl:input message="tns:GetFinTemplateDataItemsHttpPostIn"/>
+      <wsdl:output message="tns:GetFinTemplateDataItemsHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FinancialDataSoap" type="tns:FinancialDataSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetFinancials">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Financials/FinancialData/GetFinancials" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFinTemplateDataItems">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Financials/FinancialData/GetFinTemplateDataItems" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FinancialDataSoap12" type="tns:FinancialDataSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetFinancials">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Financials/FinancialData/GetFinancials" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFinTemplateDataItems">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Financials/FinancialData/GetFinTemplateDataItems" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FinancialDataHttpPost" type="tns:FinancialDataHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetFinTemplateDataItems">
+      <http:operation location="/GetFinTemplateDataItems"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FinancialData">
+    <wsdl:port name="FinancialDataSoap" binding="tns:FinancialDataSoap">
+      <soap:address location="https://api.capitaliq.com/CIQDOTNET/api/current/FinancialData.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="FinancialDataSoap12" binding="tns:FinancialDataSoap12">
+      <soap12:address location="https://api.capitaliq.com/CIQDOTNET/api/current/FinancialData.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="FinancialDataHttpPost" binding="tns:FinancialDataHttpPost">
+      <http:address location="http://209.11.218.101:8080/CIQDOTNET/api/current/FinancialData.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

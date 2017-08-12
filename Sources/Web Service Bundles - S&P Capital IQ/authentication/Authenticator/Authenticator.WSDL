@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://www.capitaliq.com/CIQDotNet/Authenticator" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="https://www.capitaliq.com/CIQDotNet/Authenticator" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://www.capitaliq.com/CIQDotNet/Authenticator">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptedPasswordLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptedPasswordLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EncryptedPasswordLoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptedPasswordLoginWithExpenseCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expenseCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptedPasswordLoginWithExpenseCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EncryptedPasswordLoginWithExpenseCodeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcelWebServiceAuth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MACAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcelWebServiceAuthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExcelWebServiceAuthResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcelWebServiceAuthExpCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MACAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expenseCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcelWebServiceAuthExpCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExcelWebServiceAuthExpCodeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateExpenseCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="expenseCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateExpenseCodeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Logout">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:EncryptedPasswordLogin" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptedPasswordLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginWithExpenseCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:EncryptedPasswordLoginWithExpenseCode" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginWithExpenseCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptedPasswordLoginWithExpenseCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcelWebServiceAuth" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcelWebServiceAuthResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthExpCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcelWebServiceAuthExpCode" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthExpCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcelWebServiceAuthExpCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateExpenseCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateExpenseCode" />
+  </wsdl:message>
+  <wsdl:message name="UpdateExpenseCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateExpenseCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginWithExpenseCodeHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="expenseCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EncryptedPasswordLoginWithExpenseCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="MACAddress" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthExpCodeHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="MACAddress" type="s:string" />
+    <wsdl:part name="expenseCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExcelWebServiceAuthExpCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="UpdateExpenseCodeHttpPostIn">
+    <wsdl:part name="expenseCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateExpenseCodeHttpPostOut" />
+  <wsdl:message name="LogoutHttpPostIn" />
+  <wsdl:message name="LogoutHttpPostOut" />
+  <wsdl:portType name="AuthenticateServiceSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLogin">
+      <wsdl:input message="tns:EncryptedPasswordLoginSoapIn" />
+      <wsdl:output message="tns:EncryptedPasswordLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLoginWithExpenseCode">
+      <wsdl:input message="tns:EncryptedPasswordLoginWithExpenseCodeSoapIn" />
+      <wsdl:output message="tns:EncryptedPasswordLoginWithExpenseCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuth">
+      <wsdl:input message="tns:ExcelWebServiceAuthSoapIn" />
+      <wsdl:output message="tns:ExcelWebServiceAuthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuthExpCode">
+      <wsdl:input message="tns:ExcelWebServiceAuthExpCodeSoapIn" />
+      <wsdl:output message="tns:ExcelWebServiceAuthExpCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExpenseCode">
+      <wsdl:input message="tns:UpdateExpenseCodeSoapIn" />
+      <wsdl:output message="tns:UpdateExpenseCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AuthenticateServiceHttpPost">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpPostIn" />
+      <wsdl:output message="tns:LoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLogin">
+      <wsdl:input message="tns:EncryptedPasswordLoginHttpPostIn" />
+      <wsdl:output message="tns:EncryptedPasswordLoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLoginWithExpenseCode">
+      <wsdl:input message="tns:EncryptedPasswordLoginWithExpenseCodeHttpPostIn" />
+      <wsdl:output message="tns:EncryptedPasswordLoginWithExpenseCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuth">
+      <wsdl:input message="tns:ExcelWebServiceAuthHttpPostIn" />
+      <wsdl:output message="tns:ExcelWebServiceAuthHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuthExpCode">
+      <wsdl:input message="tns:ExcelWebServiceAuthExpCodeHttpPostIn" />
+      <wsdl:output message="tns:ExcelWebServiceAuthExpCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExpenseCode">
+      <wsdl:input message="tns:UpdateExpenseCodeHttpPostIn" />
+      <wsdl:output message="tns:UpdateExpenseCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutHttpPostIn" />
+      <wsdl:output message="tns:LogoutHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthenticateServiceSoap" type="tns:AuthenticateServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLogin">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/EncryptedPasswordLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLoginWithExpenseCode">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/EncryptedPasswordLoginWithExpenseCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuth">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/ExcelWebServiceAuth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuthExpCode">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/ExcelWebServiceAuthExpCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExpenseCode">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/UpdateExpenseCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthenticateServiceSoap12" type="tns:AuthenticateServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLogin">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/EncryptedPasswordLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLoginWithExpenseCode">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/EncryptedPasswordLoginWithExpenseCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuth">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/ExcelWebServiceAuth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuthExpCode">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/ExcelWebServiceAuthExpCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExpenseCode">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/UpdateExpenseCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap12:operation soapAction="https://www.capitaliq.com/CIQDotNet/Authenticator/Logout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthenticateServiceHttpPost" type="tns:AuthenticateServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLogin">
+      <http:operation location="/EncryptedPasswordLogin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncryptedPasswordLoginWithExpenseCode">
+      <http:operation location="/EncryptedPasswordLoginWithExpenseCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuth">
+      <http:operation location="/ExcelWebServiceAuth" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelWebServiceAuthExpCode">
+      <http:operation location="/ExcelWebServiceAuthExpCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExpenseCode">
+      <http:operation location="/UpdateExpenseCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <http:operation location="/Logout" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticateService">
+    <wsdl:port name="AuthenticateServiceSoap" binding="tns:AuthenticateServiceSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/current/Authenticator.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthenticateServiceSoap12" binding="tns:AuthenticateServiceSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/current/Authenticator.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthenticateServiceHttpPost" binding="tns:AuthenticateServiceHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/current/Authenticator.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

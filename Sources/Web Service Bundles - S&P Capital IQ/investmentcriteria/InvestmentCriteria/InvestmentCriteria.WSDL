@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://api.capitaliq.com/1.0/InvestmentCriteria" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://api.capitaliq.com/1.0/InvestmentCriteria" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://api.capitaliq.com/1.0/InvestmentCriteria">
+      <s:element name="GetInvestmentCriteria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvestmentCriteriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvestmentCriteriaResult" type="tns:ArrayOfInvestmentCriteriaDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInvestmentCriteriaDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InvestmentCriteriaDetail" nillable="true" type="tns:InvestmentCriteriaDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InvestmentCriteriaDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustriesOfInterest" type="tns:ArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeographiesOfInterest" type="tns:ArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="StagesOfInterest" type="tns:ArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyBiteSize" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyBiteSize">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CharTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CharTypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaxValue" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndustriesOfInterest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ParentSubTypeId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubTypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StagesOfInterest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SubTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubTypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GeographiesOfInterest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ParentSubTypeId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubTypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetInvestmentCriteriaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvestmentCriteria" />
+  </wsdl:message>
+  <wsdl:message name="GetInvestmentCriteriaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvestmentCriteriaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InvestmentCriteriaSoap">
+    <wsdl:operation name="GetInvestmentCriteria">
+      <wsdl:input message="tns:GetInvestmentCriteriaSoapIn" />
+      <wsdl:output message="tns:GetInvestmentCriteriaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InvestmentCriteriaHttpPost" />
+  <wsdl:binding name="InvestmentCriteriaSoap" type="tns:InvestmentCriteriaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInvestmentCriteria">
+      <soap:operation soapAction="http://api.capitaliq.com/1.0/InvestmentCriteria/GetInvestmentCriteria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvestmentCriteriaSoap12" type="tns:InvestmentCriteriaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInvestmentCriteria">
+      <soap12:operation soapAction="http://api.capitaliq.com/1.0/InvestmentCriteria/GetInvestmentCriteria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvestmentCriteriaHttpPost" type="tns:InvestmentCriteriaHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="InvestmentCriteria">
+    <wsdl:port name="InvestmentCriteriaSoap" binding="tns:InvestmentCriteriaSoap">
+      <soap:address location="https://api.capitaliq.com/ciqdotnet/api/current/InvestmentCriteria.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvestmentCriteriaSoap12" binding="tns:InvestmentCriteriaSoap12">
+      <soap12:address location="https://api.capitaliq.com/ciqdotnet/api/current/InvestmentCriteria.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvestmentCriteriaHttpPost" binding="tns:InvestmentCriteriaHttpPost">
+      <http:address location="http://api.capitaliq.com:8080/ciqdotnet/api/current/InvestmentCriteria.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
