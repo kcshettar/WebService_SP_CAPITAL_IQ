@@ -1,4 +1,4 @@
-Date - 08/08/2017
+﻿Date - 08/08/2017
 Project Name - Macquarie List Automation
 Author - Shettar, Kiran <KShettar@navg.com>
 
@@ -79,38 +79,3 @@ To improve things:
 * Handling Duplicates in the database
 * QuickMatch Concept - Improving accuracy of the Asset name match. 
 I've written a code that uses zipcode as a common filed to improve accuracy so far using regular expresion. 
-
-Project Locations, Links & other useful information:
-* Login Credentials
-API System Administrator : API Support 
-User Id:  ewu@navg.com
-Pwd: N********s1API
-
-API Project : Source Code Credentials
-User Id: Apiadmin@navg.com
-Pwd: N********s2API
-
-* API Support
-http://support.standardandpoors.com/gds/index.php?option=com_content&view=article&id=25&Itemid=301
-https://www.capitaliq.com/help/sp-capital-iq-help/web-services
-
-APISupport@spglobal.com
-Dibella, Matthew
-matthew.dibella@spglobal.com
-S&P Global
-225 Franklin St Boston, MA 02110
-(t)617-530-8171 | (c) 617.763.4205
-matthew.dibella@spglobal.com
-www.spglobal.com/marketintelligence
-
-* Database Connections
-SQL Server Name: SVUSRYESQL1DZ\SQL1D1
-Database Name: MacquarieData
-Table Name: WebService2
-
-* Trello Board & User Stories (Sharepoint)
-https://trello.com/b/ETSNz6Gz/macquarie-list-automation
-http://msshare/it/Documentation/Forms/AllItems.aspx?RootFolder=%2Fit%2FDocumentation%2FAgile%2FProjects%2FMacQuarie%20List%20Automation&FolderCTID=0x01200069DACDBD5A91CB4EA70D6767935D5E63&View={5E1ED8A1-D4DD-4AC8-A7DB-7E24ED64252C}&InitialTabId=Ribbon%2EDocument&VisibilityContext=WSSTabPersistence
-
-* TFS Location - Code (Web Access): (3 Projects)
-http://svusstm-tfs01:8080/tfs/DefaultCollection/Macquarie%20CapitalIQ/_versionControl?path=%24%2FMacquarie%20CapitalIQ&version=T&_a=history
