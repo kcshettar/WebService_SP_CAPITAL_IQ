@@ -1,4 +1,4 @@
-Date - 08/08/2017
+Date - 08/17/2017
 Project Name - Macquarie List Automation
 Author - Shettar, Kiran <KShettar@navg.com>
 
@@ -7,9 +7,8 @@ Oskwarek, Noah <NOskwarek@navg.com>
 Patel, Parimal <PPatel@navg.com>
 
 Project Vision:
-The goal of the Macquarie List Automation System is to prevent the burden of manually updating the incomplete data of the Macquarie list. 
-The data extraction process can be automated by using API’s. Additionally, this prevents human error, provides the history of reports (Quarterly) with feedback 
-and saves time. 
+The goal of the Macquarie List Automation System is to prevent the burden of manually updating the incomplete data for Macquarie list Assets. 
+The data extraction process is automated by using API’s. Additionally, this prevents human error, provides the history of reports (Quarterly) with feedback and saves time. 
 
 Project Names:
 1. IntegrationServicesMacquarieAsset: (SSIS Package)
@@ -17,27 +16,26 @@ Project Names:
     - This Project contains a Data Flow Task
     - The package will extract the values from column name 'Asset' & 'Address' from the source excel file
     - Sorts the values in Ascending order according to 'Asset'
-    - Dumps the data into OLE DB Destination i.e. MacquarieData Database and assigns primary key to each Asset name
+    - Dumps the data into OLE DB Destination i.e. 'MacquarieData' (Table Name : WebService2) Database and assigns primary key to each Asset name
 
 2. ConsoleApplicationAPIWebService:
-    - This is a Console Application Project
-    - This Application is built using C#
+    - This is a Console Application Project. This Application is built using C#
     - Refer Developer's Guide (SPCapitalIQAPIDevelopersGuide_v20046.pdf) before using source code
-    - This makes requests to the API to get the data back from the S&P Capital IQ
-    - The response data is stored into several objects. Clear the requests everytime in the source code to avoid duplicate requests to API
-    - The source code has all the necessary comments to understand the process & code
-    - There's option to access data with JSON format that is present in the current source code
-    - A model view is created using the entity framework to access and store data to the Database
+    - The source code has all the necessary comments to understand the entire flow
+    - This makes requests to the API to get the data back from the S&P Capital IQ website
+    - The response data is stored into several objects
+    - There's option to access data as JSON format which is present in the current source code
+    - A model view is created using the entity framework to access, retrieve and store data to the Database
     - Calculate total number of requests: (Total Number of mnemonics * Total number of times invoked to data services)
     [Note: If a mnemonic gives back 'n' number of responses, it's still considered as one request E.g. List of Key Personnel in a company]
-    - Request count & Execution time calculation logic has been already added in the source code. Refer the source code for more logics
+    - Request count & Execution time calculation logic has been already added in the source code
 
 3. MacquarieListReportProject:
     - This is a Reporting Services Project
     - This is designed according to the Business Analyst Requirements
     - Expressions are added in most of the fields as per the current requirements
 
-Mnemonic & Data Guide:
+Mnemonics & Data Guide:
 1.  "IQ_COMPANY_ID_QUICK_MATCH" - Top 5 matches to the input string arranged by rank
 2.  "IQ_PROFESSIONAL" - List of all professionals of company (Not in order) - Total Number of people: Maximum 30 
 3.  "IQ_PROFESSIONAL_TITLE" - List of titles for respective company professionals - Manual code is written to display the CEO name at the first
@@ -64,31 +62,31 @@ Mnemonics with dependency:
 23. "COMPANY_TAX_ID" - Also called as FEIN number OR Company Identification Number
 
 Executing the Project:
-Constraint: The table 'WebService2' has to be empty before running the SSIS package to prevent duplicate asset names
+Constraint: The table 'WebService2' has to be empty to avoid overlapping of previous Asset names
 1. Run the SSIS Package : 
-This loads data (Asset names) from the excel file and dumps data to the Database
+This loads data (Asset names & Address-if availalabe) from the excel file and dumps it to the Database
 2. Run the ConsoleApplicationAPIWebService project without Debugging
 This executes by reading the Asset names row by row from the database. Requests data from the API. Dumps back the response data into database
 3. Report Generation:
-As the report is already deployed, just refresh the weblink to load the recent data from the database. [WebLink provided at the end of document]
+As the report is already deployed, just refresh the weblink to load the recent data from the database - [WebLink provided at the end of document]
 
 Possible Exceptions: 
-* All exceptions handled
+* All exceptions are handled currently
 
 To improve things:
 * Handling Duplicates in the database
 * QuickMatch Concept - Improving accuracy of the Asset name match. 
-I've written a code that uses zipcode as a common filed to improve accuracy so far using regular expresion. 
+* Refer Trello Board [WebLink provided at the end of document]
 
 Project Locations, Links & other useful information:
 * Login Credentials
 API System Administrator : API Support 
 User Id:  ewu@navg.com
-Pwd: N********s1API
+Pwd: Navigators1API
 
 API Project : Source Code Credentials
 User Id: Apiadmin@navg.com
-Pwd: N********s2API
+Pwd: Navigators2API
 
 * API Support
 http://support.standardandpoors.com/gds/index.php?option=com_content&view=article&id=25&Itemid=301
