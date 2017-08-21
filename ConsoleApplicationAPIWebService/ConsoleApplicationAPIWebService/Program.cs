@@ -120,8 +120,8 @@ namespace ConsoleApplicationAPIWebService
                         reqs.Add(req);
 
                         SDKDataInput dataInputQuickMatch = new SDKDataInput(
-                            "Apiadmin@navg.com", // apiUser - required
-                            "Navigators2API", // apiPass - required
+                            "********@navg.com", // apiUser - required
+                            "N*********2API", // apiPass - required
                             true, // default is true
                             null, // null or SDKProxy
                             new List<SDKDataRequest>(reqs)
@@ -209,8 +209,8 @@ namespace ConsoleApplicationAPIWebService
                                         reqs.Add(req);
 
                                         SDKDataInput dataInputzipCodeMatchCompanyID = new SDKDataInput(
-                                            "Apiadmin@navg.com", // apiUser - required
-                                            "Navigators2API", // apiPass - required
+                                            "********@navg.com", // apiUser - required
+                                            "N*********2API", // apiPass - required
                                             true, // default is true
                                             null, // null or SDKProxy
                                             new List<SDKDataRequest>(reqs)
@@ -282,8 +282,8 @@ namespace ConsoleApplicationAPIWebService
 
                             // Create Data Input
                             SDKDataInput dataInputProfessional = new SDKDataInput(
-                                "Apiadmin@navg.com", // apiUser - required
-                                "Navigators2API", // apiPass - required
+                                "********@navg.com", // apiUser - required
+                                "N*********2API", // apiPass - required
                                 true, // default is true
                                 null, // null or SDKProxy
                                 new List<SDKDataRequest>(reqs)
@@ -386,8 +386,8 @@ namespace ConsoleApplicationAPIWebService
 
                             // Create Data Input
                             SDKDataInput dataInputSubsidiary = new SDKDataInput(
-                                "Apiadmin@navg.com", // apiUser - required
-                                "Navigators2API", // apiPass - required
+                                "********@navg.com", // apiUser - required
+                                "N*********2API", // apiPass - required
                                 true, // default is true
                                 null, // null or SDKProxy
                                 new List<SDKDataRequest>(reqs)
@@ -436,8 +436,8 @@ namespace ConsoleApplicationAPIWebService
                                         //reqs.Add(req);
                                         //// Create Data Input
                                         //SDKDataInput dataInputSubsidiaryName = new SDKDataInput(
-                                        //    "Apiadmin@navg.com", // apiUser - required
-                                        //    "Navigators2API", // apiPass - required
+                                        //    "********@navg.com", // apiUser - required
+                                        //    "N*********2API", // apiPass - required
                                         //    true, // default is true
                                         //    null, // null or SDKProxy
                                         //    new List<SDKDataRequest>(reqs)
@@ -487,8 +487,8 @@ namespace ConsoleApplicationAPIWebService
                             reqs.Add(req);
                             // Create Data Input
                             SDKDataInput dataInputMatch = new SDKDataInput(
-                                "Apiadmin@navg.com", // apiUser - required
-                                "Navigators2API", // apiPass - required
+                                "********@navg.com", // apiUser - required
+                                "N*********2API", // apiPass - required
                                 true, // default is true
                                 null, // null or SDKProxy
                                 new List<SDKDataRequest>(reqs)
@@ -540,8 +540,8 @@ namespace ConsoleApplicationAPIWebService
                             reqs.Add(req);
 
                             SDKDataInput dataInputGeneralDetails = new SDKDataInput(
-                                "Apiadmin@navg.com", // apiUser - required
-                                "Navigators2API", // apiPass - required
+                                "********@navg.com", // apiUser - required
+                                "N*********2API", // apiPass - required
                                 true, // default is true
                                 null, // null or SDKProxy
                                 new List<SDKDataRequest>(reqs)
@@ -711,8 +711,8 @@ namespace ConsoleApplicationAPIWebService
 
                                 // Create Data Input
                                 SDKDataInput dataInputThirdParty = new SDKDataInput(
-                                    "Apiadmin@navg.com", // apiUser - required
-                                    "Navigators2API", // apiPass - required
+                                    "********@navg.com", // apiUser - required
+                                    "N*********2API", // apiPass - required
                                     true, // default is true
                                     null, // null or SDKProxy
                                     new List<SDKDataRequest>(reqs)
@@ -776,8 +776,8 @@ namespace ConsoleApplicationAPIWebService
 
                                     // Create Data Input
                                     SDKDataInput dataInputTaxID = new SDKDataInput(
-                                        "Apiadmin@navg.com", // apiUser - required
-                                        "Navigators2API", // apiPass - required
+                                        "********@navg.com", // apiUser - required
+                                        "N*********2API", // apiPass - required
                                         true, // default is true
                                         null, // null or SDKProxy
                                         new List<SDKDataRequest>(reqs)
@@ -826,8 +826,8 @@ namespace ConsoleApplicationAPIWebService
 
                             // Create Data Input
                             SDKDataInput dataInputEmployeeCount = new SDKDataInput(
-                                "Apiadmin@navg.com", // apiUser - required
-                                "Navigators2API", // apiPass - required
+                                "********@navg.com", // apiUser - required
+                                "N*********2API", // apiPass - required
                                 true, // default is true
                                 null, // null or SDKProxy
                                 new List<SDKDataRequest>(reqs)
